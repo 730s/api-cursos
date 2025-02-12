@@ -1,9 +1,6 @@
 package com.leo.apicursos.modules.company.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -22,6 +19,9 @@ public class CourseEntity {
     private String language;
     private String level;
     private double price;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private CompanyEntity company;
     @CreationTimestamp
-    private LocalDateTime criatedAt;
+    private LocalDateTime createdAt;
 }

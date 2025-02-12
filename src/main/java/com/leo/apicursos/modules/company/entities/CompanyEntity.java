@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,6 +21,7 @@ public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @NotNull
     private String name;
     @Length (min = 14, max = 14, message = "Informe um CNPJ válido")
     private String cnpj;
@@ -30,5 +32,5 @@ public class CompanyEntity {
     @Email(message = "O campo deve conter um e-mail válido.")
     private String email;
     @CreationTimestamp
-    private LocalDateTime criatedAt;
+    private LocalDateTime createdAt;
 }
