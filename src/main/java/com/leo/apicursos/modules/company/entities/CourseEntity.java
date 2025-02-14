@@ -10,7 +10,6 @@ import java.util.UUID;
 @Entity(name = "course")
 @Data
 public class CourseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
