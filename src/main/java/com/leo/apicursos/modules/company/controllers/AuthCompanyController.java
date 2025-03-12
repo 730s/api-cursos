@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/company")
 public class AuthCompanyController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
+
+    public AuthCompanyController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/auth")
-    public ResponseEntity<AuthCompanyResponseDTO> auth (@RequestBody AuthCompanyRequestDTO authCompanyRequestDTO){
-        var authResponse = authService.authenticate(authCompanyRequestDTO);
-        return ResponseEntity.ok(authResponse);
+    public ResponseEntity<AuthCompanyResponseDTO> authenticate(@RequestBody AuthCompanyRequestDTO request) {
+        AuthCompanyResponseDTO response = authService.authenticate(request);
+        return ResponseEntity.ok(response);
     }
 }
